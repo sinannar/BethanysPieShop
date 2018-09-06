@@ -23,9 +23,10 @@ namespace BethanysPieShop.Controllers
             _categoryRepository = categoryRepository;
         }
 
-
+        //http://localhost:57107/pie/list
         public ViewResult List()
         {
+            ViewBag.CurrentCategory = "Cheese Cakes";
             return View(_pieRepository.Pies);
         }
     }
