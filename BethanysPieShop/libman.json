@@ -1,0 +1,37 @@
+//https://www.stevejgordon.co.uk/library-manager-libman-visual-studio-2017
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "twitter-bootstrap@3.3.7",
+      "destination": "wwwroot/lib/bootstrap",
+      "files": [
+        "css/bootstrap.min.css",
+        "css/bootstrap.css.map",
+        "css/bootstrap.css",
+        "css/bootstrap-theme.css",
+        "css/bootstrap-theme.css.map",
+        "css/bootstrap-theme.min.css",
+        "css/bootstrap-theme.min.css.map",
+        "css/bootstrap.min.css.map",
+        "fonts/glyphicons-halflings-regular.eot",
+        "fonts/glyphicons-halflings-regular.svg",
+        "fonts/glyphicons-halflings-regular.ttf",
+        "fonts/glyphicons-halflings-regular.woff",
+        "fonts/glyphicons-halflings-regular.woff2",
+        "js/bootstrap.js",
+        "js/bootstrap.min.js",
+        "js/npm.js"
+      ]
+    },
+    {
+      "library": "jquery@3.3.1",
+      "destination": "wwwroot/lib/jquery",
+      "files": [
+        "core.js",
+        "jquery.js","jquery.min.js","jquery.min.map","jquery.slim.js","jquery.slim.min.js","jquery.slim.min.map"
+      ]
+    }
+  ]
+}
