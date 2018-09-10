@@ -9,7 +9,8 @@
 
     @foreach (var pie in Model.PiesOfTheWeek)
     {
-        @Html.Partial("PieOfTheWeekSummary", pie)
+        @*@Html.Partial("PieOfTheWeekSummary", pie)*@
+        @await Html.PartialAsync("PieOfTheWeekSummary", pie)
     }
 
 </div>
