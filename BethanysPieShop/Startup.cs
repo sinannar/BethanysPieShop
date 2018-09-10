@@ -59,8 +59,21 @@ namespace BethanysPieShop
 
             app.UseSession();
 
-            app.UseMvcWithDefaultRoute();
+            //pipeline with a default route named 'default' and the following template: '{controller=Home}/{action=Index}/{id?}'.
+            //app.UseMvcWithDefaultRoute();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "categoryFilter",
+                    template: "Pie/{action}/{category?}",
+                    defaults: new { Controller = "Pie", action = "List" });
 
+
+                routes.MapRoute(
+                    name: "deafult",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+
+            });
 
             DbInitializer.Seed(serviceProvider);
         }
