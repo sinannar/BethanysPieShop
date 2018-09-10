@@ -36,6 +36,7 @@ namespace BethanysPieShop
             // Setting up dependency Injection
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<IPieRepository, PieRepository>();
+            services.AddTransient<IOrderRepository, OrderRepository>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
