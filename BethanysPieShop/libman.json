@@ -30,8 +30,23 @@
       "destination": "wwwroot/lib/jquery",
       "files": [
         "core.js",
-        "jquery.js","jquery.min.js","jquery.min.map","jquery.slim.js","jquery.slim.min.js","jquery.slim.min.map"
+        "jquery.js",
+        "jquery.min.js",
+        "jquery.min.map",
+        "jquery.slim.js",
+        "jquery.slim.min.js",
+        "jquery.slim.min.map"
       ]
+    },
+    {
+      "library": "jquery-validation-unobtrusive@3.2.10",
+      "destination": "wwwroot/lib/jquery-validation-unobtrusive",
+      "files": [ "jquery.validate.unobtrusive.js", "jquery.validate.unobtrusive.min.js" ]
+    },
+    {
+      "library": "jscroll@2.4.1",
+      "destination": "wwwroot/lib/jscroll",
+      "files": ["jquery.jscroll.js","jquery.jscroll.min.js","jquery.jscroll.min.js.map"]
     }
   ]
 }
