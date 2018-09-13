@@ -48,7 +48,7 @@ namespace BethanysPieShop.Controllers
 
         public IActionResult CheckoutComplete()
         {
-            ViewBag.CheckoutCompleteMessage = "Thanks for your order. You'll soon enjoy your delicious pies";
+            ViewBag.CheckoutCompleteMessage = HttpContext.User.Identity.Name + ", thanks for your order. You'll soon enjoy your delicious pies";
             return View();
         }
     }
