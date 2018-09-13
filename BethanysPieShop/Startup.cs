@@ -12,7 +12,11 @@ using Microsoft.Extensions.FileProviders;
 using System.IO;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
+//https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityrole?view=aspnetcore-1.1
+//https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identitydbcontext?view=aspnetcore-2.1
+//https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuser?view=aspnetcore-1.1
 namespace BethanysPieShop
 {
     public class Startup
@@ -32,6 +36,9 @@ namespace BethanysPieShop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(_configurationRoot.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>();
 
             // Setting up dependency Injection
             services.AddTransient<ICategoryRepository, CategoryRepository>();
@@ -59,6 +66,10 @@ namespace BethanysPieShop
             app.UseStaticFiles();
 
             app.UseSession();
+
+            //This method is obsolete and will be removed in a future version. The recommended alternative is UseAuthentication(). See https://go.microsoft.com/fwlink/?linkid=845470'
+            //app.UseIdentity();
+            app.UseAuthentication();
 
             //pipeline with a default route named 'default' and the following template: '{controller=Home}/{action=Index}/{id?}'.
             //app.UseMvcWithDefaultRoute();
