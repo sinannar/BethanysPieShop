@@ -61,10 +61,18 @@ namespace BethanysPieShop
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IServiceProvider serviceProvider)
         {
-            app.UseDeveloperExceptionPage();
-            app.UseStatusCodePages();
-            app.UseStaticFiles();
+            if(env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
+                app.UseStatusCodePages();
+            }
+            else
+            {
+                app.UseExceptionHandler("/AppException");
+            }
 
+            app.UseStaticFiles();
             app.UseSession();
 
             //This method is obsolete and will be removed in a future version. The recommended alternative is UseAuthentication(). See https://go.microsoft.com/fwlink/?linkid=845470'
