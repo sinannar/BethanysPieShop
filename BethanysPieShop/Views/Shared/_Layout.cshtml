@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -30,8 +35,12 @@
                     @await Component.InvokeAsync("CategoryMenu")
                     <li><a asp-controller="Contact" asp-action="Index">Contact us</a></li>
                     @await Component.InvokeAsync("ShoppingCartSummary")
+                    @if (SignInManager.IsSignedIn(User))// && User.IsInRole("Administrator"))
+                    {
+                        @await Component.InvokeAsync("AdminMenu")
+                    }
                 </ul>
-                @await  Html.PartialAsync("LoginPartial")
+                @await Html.PartialAsync("LoginPartial")
             </div>
         </div>
     </nav>
@@ -48,6 +57,6 @@
             </div>
         </div>
     </div>
-    @RenderSection("scripts", required: false) @*  THIS MEANS PAGES CAN CREATE SECTION CALLED scripts AND USE IT AND WE ARE MAKING IT OPTIONAL SO PAGES DONT HAVE TO ADD *@ 
+    @RenderSection("scripts", required: false) @*  THIS MEANS PAGES CAN CREATE SECTION CALLED scripts AND USE IT AND WE ARE MAKING IT OPTIONAL SO PAGES DONT HAVE TO ADD *@
 </body>
 </html>
