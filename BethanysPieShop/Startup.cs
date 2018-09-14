@@ -37,8 +37,22 @@ namespace BethanysPieShop
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(_configurationRoot.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<AppDbContext>();
+            services.AddIdentity<IdentityUser, IdentityRole>(options => {
+                //options.Password.RequiredLength = 8;
+                //options.Password.RequireNonAlphanumeric = true;
+                //options.Password.RequireUppercase = true;
+                //options.Password.RequireLowercase = true;
+                //options.Password.RequireLowercase = true;
+                //options.Password.RequireDigit = true;
+                //options.Password.RequiredUniqueChars = 1;
+                options.Password.RequiredLength = 4;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireDigit = false;
+                options.Password.RequiredUniqueChars = 0;
+            }).AddEntityFrameworkStores<AppDbContext>();
 
             // Setting up dependency Injection
             services.AddTransient<ICategoryRepository, CategoryRepository>();
