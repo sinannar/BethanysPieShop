@@ -13,6 +13,7 @@ using System.IO;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using BethanysPieShop.Auth;
 
 //https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityrole?view=aspnetcore-1.1
 //https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identitydbcontext?view=aspnetcore-2.1
@@ -37,7 +38,7 @@ namespace BethanysPieShop
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(_configurationRoot.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>(options => {
+            services.AddIdentity<ApplicationUser, IdentityRole>(options => {
                 //options.Password.RequiredLength = 8;
                 //options.Password.RequireNonAlphanumeric = true;
                 //options.Password.RequireUppercase = true;

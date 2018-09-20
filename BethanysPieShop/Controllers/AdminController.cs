@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BethanysPieShop.Auth;
 using BethanysPieShop.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -13,9 +14,9 @@ namespace BethanysPieShop.Controllers
     [Authorize]
     public class AdminController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public AdminController(UserManager<IdentityUser> userManager)
+        public AdminController(UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
         }
@@ -41,7 +42,7 @@ namespace BethanysPieShop.Controllers
         {
             if (!ModelState.IsValid) return View(addUserViewModel);
 
-            var user = new IdentityUser()
+            var user = new ApplicationUser()
             {
                 UserName = addUserViewModel.UserName,
                 Email = addUserViewModel.Email
@@ -97,7 +98,7 @@ namespace BethanysPieShop.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteUser(string userId)
         {
-            IdentityUser user = await _userManager.FindByIdAsync(userId);
+            ApplicationUser user = await _userManager.FindByIdAsync(userId);
 
             if (user != null)
             {
